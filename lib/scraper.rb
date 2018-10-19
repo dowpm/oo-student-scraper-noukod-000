@@ -37,4 +37,4 @@ class Scraper
 end
 # binding.pry
 # Scraper.scrape_index_page './fixtures/student-site/index.html'
-Scraper.scrape_profile_page "./fixtures/student-site/students/joe-burgess.html"
+# Scraper.scrape_profile_page "./fixtures/student-site/students/joe-burgess.html"
