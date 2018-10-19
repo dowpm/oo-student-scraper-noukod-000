@@ -11,7 +11,7 @@ class Scraper
       {name: html_student.css("h4").text, location: html_student.css("p").text, profile_url: html_student.attribute("href").value}
     end
     # binding.pry
-    
+
   end
 
   def self.scrape_profile_page(profile_url)
