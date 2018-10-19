@@ -16,7 +16,7 @@ class Scraper
     student, reseaus = {}, [:linkedin, :twitter, :github]
     Nokogiri::HTML(open(profile_url)).tap do |nokogiri|
       links = nokogiri.css(".social-icon-container a").map {|a| a.attribute("href").value}
-      
+
       links.each do |link|
         reseaus.each do |reseau|
           if link.include?(reseau.to_s)
@@ -27,8 +27,8 @@ class Scraper
       end
 
       student[:profile_quote] = nokogiri.css(".profile-quote").text if nokogiri.css(".profile-quote")
-      student[:bio] = nokogiri.css(".description-holder p").text if nokogiri.css(".description-holder p")
-      
+      student[:bio] = nokogiri.css("div.bio-content.content-holder div.description-holder p").text if nokogiri.css("div.bio-content.content-holder div.description-holder p")
+
     end
     binding.pry
   end
