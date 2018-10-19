@@ -19,5 +19,5 @@ class Scraper
   end
 
 end
-binding.pry
-Scraper.scrape_index_page './fixtures/student-site/index.html'
+# binding.pry
+# Scraper.scrape_index_page './fixtures/student-site/index.html'
