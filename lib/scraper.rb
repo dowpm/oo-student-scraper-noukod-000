@@ -30,7 +30,8 @@ class Scraper
       student[:bio] = nokogiri.css("div.bio-content.content-holder div.description-holder p").text if nokogiri.css("div.bio-content.content-holder div.description-holder p")
 
     end
-    binding.pry
+    # binding.pry
+    student
   end
 
 end
