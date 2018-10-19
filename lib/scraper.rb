@@ -13,7 +13,23 @@ class Scraper
   end
 
   def self.scrape_profile_page(profile_url)
-    # Nokogiri::HTML(profile_url).css(".social-icon-container").each {|html| }
+    student, reseaus = {}, [:linkedin, :twitter, :github]
+    Nokogiri::HTML(open(profile_url)).tap do |nokogiri| 
+      links = nokogiri.css(".social-icon-container a").map {|a| a.attribute("href").value}
+      links.each do |link|
+        reseaus.each do |reseau| 
+          if link.include?(reseau.to_s)
+            student[reseau] = link
+          end
+        end
+        student[:blog] = link if !student.values.include?(link)
+      end
+          
+        # if link.include?("twitter")
+        #   student[:twitter] = link
+        # elsif 
+        # end
+    end
     binding.pry
   end
 
@@ -21,4 +37,3 @@ end
 # binding.pry
 # Scraper.scrape_index_page './fixtures/student-site/index.html'
 Scraper.scrape_profile_page "./fixtures/student-site/students/joe-burgess.html"
-
